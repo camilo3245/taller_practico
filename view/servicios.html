@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Servicios</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<h1>Avianca</h1>
+</header>
+
+<section class="servicios">
+
+<h2 class="titulo">Servicios Avianca</h2>
+
+<p class="info-servicios">
+Avianca ofrece una amplia gama de servicios aéreos nacionales e internacionales, brindando comodidad, seguridad y eficiencia a todos sus pasajeros. 
+Cuenta con múltiples destinos, atención al cliente de calidad y opciones de viaje adaptadas a cada necesidad.
+</p>
+
+<!-- 🔥 TARJETAS -->
+<div class="servicio">
+<img src="../img/Vuelonaciona.jpg">
+<p>Vuelos nacionales con la mejor comodidad.</p>
+</div>
+
+<div class="servicio">
+<img src="../img/Viajeinter.jpg">
+<p>Destinos internacionales a precios accesibles.</p>
+</div>
+
+<div class="servicio">
+<img src="../img/atencion24-7.jpg">
+<p>Atención al cliente 24/7.</p>
+</div>
+
+<div class="servicio">
+<img src="../img/promos.jpg">
+<p>Promociones y ofertas exclusivas.</p>
+</div>
+
+<!-- ✈️ COMPRA -->
+<h2>Compra tu vuelo</h2>
+
+<div class="srv-compra">
+
+<input type="text" placeholder="Origen">
+<input type="text" placeholder="Destino">
+
+<input type="date">
+<input type="date">
+
+<select>
+<option>1 pasajero</option>
+<option>2 pasajeros</option>
+<option>3 pasajeros</option>
+</select>
+
+<button onclick="srvBuscar()">Buscar vuelos</button>
+
+</div>
+
+<div id="srv-resultados"></div>
+
+</section>
+
+<!-- ICONOS -->
+<div class="icon-bar">
+<a href="../index.html"><img src="../img/casa.jpg"></a>
+<a href="servicios.html"><img src="../img/usuario.jpg"></a>
+<a href="contacto.html"><img src="../img/telefono.jpg"></a>
+</div>
+
+</div>
+<script>
+
+function srvBuscar(){
+
+let contenedor = document.getElementById("srv-resultados");
+
+contenedor.innerHTML = "";
+
+/* vuelos simulados */
+let vuelos = [
+{ruta:"Bogotá → Cartagena", precio:120000},
+{ruta:"Medellín → Miami", precio:850000},
+{ruta:"Cali → Madrid", precio:2500000}
+];
+
+vuelos.forEach(vuelo => {
+
+let div = document.createElement("div");
+div.classList.add("srv-vuelo");
+
+div.innerHTML = `
+<span>${vuelo.ruta} - $${vuelo.precio}</span>
+<button onclick="seleccionarVuelo('${vuelo.ruta}', ${vuelo.precio})">Seleccionar</button>
+`;
+
+contenedor.appendChild(div);
+
+});
+
+}
+
+/* SELECCIONAR VUELO */
+function seleccionarVuelo(ruta, precio){
+
+let contenedor = document.getElementById("srv-resultados");
+
+contenedor.innerHTML = `
+<h3>Selecciona tu asiento</h3>
+<div class="srv-grid" id="asientos"></div>
+`;
+
+let grid = document.getElementById("asientos");
+
+function crearAsiento(numero, ruta, precio){
+
+let asiento = document.createElement("div");
+asiento.classList.add("srv-asiento");
+asiento.textContent = numero;
+
+asiento.onclick = function(){
+confirmarCompra(ruta, precio, numero);
+};
+
+return asiento;
+
+}
+
+/* crear asientos */
+let filas = 6;
+let columnas = ["A","B","C","D"]; // 2 izquierda, 2 derecha
+
+for(let f=1; f<=filas; f++){
+
+let filaDiv = document.createElement("div");
+filaDiv.style.display = "flex";
+filaDiv.style.justifyContent = "center";
+filaDiv.style.gap = "10px";
+filaDiv.style.marginBottom = "8px";
+
+/* lado izquierdo */
+["A","B"].forEach(letra => {
+let asiento = crearAsiento(f + letra, ruta, precio);
+filaDiv.appendChild(asiento);
+});
+
+/* pasillo */
+let pasillo = document.createElement("div");
+pasillo.style.width = "20px";
+filaDiv.appendChild(pasillo);
+
+/* lado derecho */
+["C","D"].forEach(letra => {
+let asiento = crearAsiento(f + letra, ruta, precio);
+filaDiv.appendChild(asiento);
+});
+
+grid.appendChild(filaDiv);
+
+}
+
+}
+
+/* CONFIRMAR */
+function confirmarCompra(ruta, precio, asiento){
+
+let contenedor = document.getElementById("srv-resultados");
+
+contenedor.innerHTML = `
+<div class="srv-ok">
+<h3>✈️ Compra confirmada</h3>
+<p>${ruta}</p>
+<p>Asiento: ${asiento}</p>
+<p>Total: $${precio}</p>
+</div>
+`;
+
+}
+
+</script>
+
+</body>
+</html>

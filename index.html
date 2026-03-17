@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Avianca</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<h1>Avianca</h1>
+</header>
+
+<!-- IMAGEN PRINCIPAL -->
+<img src="img/avianca.jpg" class="main-img">
+
+<!-- BARRA ICONOS (como mockup) -->
+<div class="icon-bar">
+
+<a href="index.html">
+<img src="img/casa.jpg">
+</a>
+
+<a href="view/servicios.html">
+<img src="img/usuario.jpg">
+</a>
+
+<a href="view/contacto.html">
+<img src="img/telefono.jpg">
+</a>
+
+</div>
+
+<!-- NOTICIAS (igual mockup) -->
+
+<section class="noticias">
+
+<h2>Destinos digitales ✈️</h2>
+
+<div class="tablero">
+
+<div class="fila">
+<span>AV201</span>
+<span class="origen">BOG</span>
+<span class="destino">---</span>
+<span class="estado">...</span>
+</div>
+
+<div class="fila">
+<span>AV145</span>
+<span class="origen">MDE</span>
+<span class="destino">---</span>
+<span class="estado">...</span>
+</div>
+
+<div class="fila">
+<span>AV310</span>
+<span class="origen">CLO</span>
+<span class="destino">---</span>
+<span class="estado">...</span>
+</div>
+
+</div>
+
+<h3>Ofertas de viaje</h3>
+
+<p>✈️ Bogotá → Cartagena desde $120.000</p>
+<p>✈️ Medellín → Miami desde $850.000</p>
+<p>✈️ Cali → Madrid desde $2.500.000</p>
+
+</section>
+
+<!-- VIDEO -->
+<section class="video">
+
+<iframe width="100%" height="315" 
+src="https://www.youtube.com/embed/feDjdS-tXqU?si=o5inmX_KJfvrbC3v" 
+title="YouTube video player" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" 
+allowfullscreen>
+</iframe>
+
+</section>
+
+<!-- AVIONES (extra tuyo pero bien ubicado) -->
+<section class="aviones">
+<div class="aviones-container">
+<img src="img/aviones.jpg" class="avion">
+<img src="img/aviones.jpg" class="avion">
+<img src="img/aviones.jpg" class="avion">
+<img src="img/aviones.jpg" class="avion">
+<img src="img/aviones.jpg" class="avion">
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<p>Página web realizada © 2026</p>
+
+<div class="redes">
+
+<a href="https://www.facebook.com/AviancaGlobal" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+</a>
+
+<a href="https://www.instagram.com/avianca" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+</a>
+
+<a href="https://twitter.com/Avianca" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733579.png">
+</a>
+
+<a href="https://www.youtube.com/user/aviancachannel" target="_blank">
+<img src="https://cdn-icons-png.flaticon.com/512/733/733646.png">
+</a>
+
+</div>
+</div>
+
+</footer>
+
+</div>
+<script>
+
+const destinos = ["CTG","MIA","MAD","MEX","PTY","NYC"];
+const estados = ["BOARDING","ON TIME","LAST CALL","DELAYED"];
+
+function cambiarDatos(){
+
+document.querySelectorAll(".fila").forEach(fila => {
+
+let destino = fila.querySelector(".destino");
+let estado = fila.querySelector(".estado");
+
+destino.textContent = destinos[Math.floor(Math.random()*destinos.length)];
+estado.textContent = estados[Math.floor(Math.random()*estados.length)];
+
+});
+
+}
+
+setInterval(cambiarDatos, 2000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contacto</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+<h1>Avianca</h1>
+</header>
+
+<h2 class="titulo">Contáctanos</h2>
+
+<form class="formulario" id="formulario">
+
+<label>Tipo de documento</label>
+<select required>
+<option value="">Seleccione</option>
+<option>Cédula de ciudadanía</option>
+<option>Tarjeta de identidad</option>
+<option>Cédula de extranjería</option>
+</select>
+
+<label>Cédula</label>
+<input type="number" placeholder="Ingrese su cédula" required>
+
+<label>Nombres</label>
+<input type="text" placeholder="Ingrese sus nombres" required>
+
+<label>Apellidos</label>
+<input type="text" placeholder="Ingrese sus apellidos" required>
+
+<label>Email</label>
+<input type="email" placeholder="Ingrese su correo" required>
+
+<label>Usuario</label>
+<input type="text" placeholder="Cree un usuario" required>
+
+<label>Password</label>
+<input type="password" placeholder="Cree una contraseña" required>
+
+<label>Confirmar Password</label>
+<input type="password" placeholder="Repita la contraseña" required>
+
+<label>Teléfono</label>
+<input type="tel" placeholder="Número de contacto">
+
+<button type="submit">Enviar</button>
+
+
+</form>
+
+<!-- ICONOS -->
+<div class="icon-bar">
+<a href="../index.html"><img src="../img/casa.jpg"></a>
+<a href="servicios.html"><img src="../img/usuario.jpg"></a>
+<a href="contacto.html"><img src="../img/telefono.jpg"></a>
+</div>
+
+</div>
+
+<script>
+document.getElementById("formulario").addEventListener("submit",function(e){
+e.preventDefault()
+alert("Formulario enviado correctamente ✈️")
+})
+
+<script>
+document.getElementById("formulario").addEventListener("submit", function(e){
+
+let pass = document.querySelectorAll("input[type='password']")[0].value;
+let confirm = document.querySelectorAll("input[type='password']")[1].value;
+
+if(pass !== confirm){
+e.preventDefault();
+alert("Las contraseñas no coinciden ❌");
+return;
+}
+
+alert("Formulario enviado correctamente ✈️");
+
+});
+</script>
+</script>
+
+</body>
+</html>
